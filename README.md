@@ -1,2 +1,2 @@
 # i18n
-ConvertI18nPropertiesFromOrToJson 
+I18n Resource Bundles (properties) from or to JSON maven plugin 
