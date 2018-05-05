@@ -1,19 +1,53 @@
 package ch.vii.i18n;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
+import java.nio.charset.Charset;
+import java.util.Properties;
+
 import org.apache.maven.plugins.annotations.LifecyclePhase;
 import org.apache.maven.plugins.annotations.Mojo;
 
-import ch.vii.i18n.convert.I18nProperties;
-import ch.vii.i18n.convert.I18nPropertiesToJson;
+import com.fasterxml.jackson.core.util.DefaultPrettyPrinter;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 @Mojo(name = "properties2json", defaultPhase = LifecyclePhase.PROCESS_RESOURCES, threadSafe = true)
 public class Properties2JsonMojo extends AbstractJson2PropertiesMojo {
 
-	private I18nProperties i18nProperties = new I18nPropertiesToJson();
+	@Override
+	public Properties read(File f) {
+		try {
+			Properties readValue = new Properties();
+			readValue.load(new InputStreamReader(new FileInputStream(f), "UTF-8"));
+
+			return readValue;
+
+		} catch (Exception e) {
+			throw new RuntimeException(e);
+		}
+	}
 
 	@Override
-	I18nProperties getI18nProperties() {
-		return i18nProperties;
+	public void write(Properties p, File f) {
+		try {
+
+			ObjectMapper mapper = new ObjectMapper();
+
+			// Object to JSON in file
+			mapper.setDefaultPrettyPrinter(new DefaultPrettyPrinter());
+			mapper.writerWithDefaultPrettyPrinter()
+					.writeValue(new OutputStreamWriter(new FileOutputStream(f), Charset.forName("UTF8")), p);
+		} catch (Exception e) {
+			throw new RuntimeException(e);
+		}
+	}
+
+	@Override
+	public String getFileExtension() {
+		return ".json";
 	}
 
 	@Override

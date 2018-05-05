@@ -12,7 +12,7 @@ import org.apache.maven.plugins.annotations.Parameter;
 
 import ch.vii.i18n.convert.I18nProperties;
 
-public abstract class AbstractJson2PropertiesMojo extends AbstractMojo {
+public abstract class AbstractJson2PropertiesMojo extends AbstractMojo implements I18nProperties {
 
 	@Parameter(property = "sourcePath", defaultValue = "${basedir}/src/properties")
 	private String sourcePath;
@@ -46,25 +46,20 @@ public abstract class AbstractJson2PropertiesMojo extends AbstractMojo {
 		getLog().info(
 				"- Found files: " + listOfFiles.length + " in " + srcPath.getAbsolutePath() + "/" + getFileWildcard());
 
-		I18nProperties i18nProperties = getI18nProperties();
-
 		// Arrays.stream(listOfFiles).forEach(f -> {
 		// lampda not supported
 		// });
 		for (File f : listOfFiles) {
-			File targetFile = renameFile(targetPath + "/" + f.getName(), getFileWildcard(),
-					i18nProperties.getFileExtension());
+			File targetFile = renameFile(targetPath + "/" + f.getName(), getFileWildcard(), getFileExtension());
 
 			getLog().info("--- from: " + f.getAbsolutePath());
 			getLog().info("--- to: " + targetFile.getAbsolutePath());
 
-			Properties properties = i18nProperties.read(f);
-			i18nProperties.write(properties, targetFile);
+			Properties properties = read(f);
+			write(properties, targetFile);
 		}
 
 	}
-
-	abstract I18nProperties getI18nProperties();
 
 	abstract String getFileWildcard();
 
