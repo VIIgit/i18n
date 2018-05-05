@@ -1,4 +1,4 @@
 {
-  "i18n.hello.world_description" : "Value \\3 \n2nd",
-  "i18n.hello.world_title" : "Hello Wörld 😀⚽️"
+  "i18n.hello.world_description" : "special characters \t\\ \n2nd öäüàè",
+  "i18n.hello.world_title" : "Hello World 😀⚽️"
 }
