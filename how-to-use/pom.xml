@@ -3,7 +3,7 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-	<groupId>ch.vii</groupId>
+	<groupId>ch.vii.i18n</groupId>
 	<artifactId>plugin-test</artifactId>
 	<version>1.0-SNAPSHOT</version>
 
@@ -15,8 +15,8 @@
 	<build>
 		<plugins>
 			<plugin>
-				<groupId>ch.vii</groupId>
-				<artifactId>i18n-json2properties-maven-plugin</artifactId>
+				<groupId>ch.vii.i18n</groupId>
+				<artifactId>terminology-converter-maven-plugin</artifactId>
 				<version>0.0.1</version>
 				<configuration>
 					<sourcePath>${sourcePath}</sourcePath>

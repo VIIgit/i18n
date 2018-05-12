@@ -3,12 +3,12 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
-	<groupId>ch.vii</groupId>
-	<artifactId>i18n-json2properties-pom</artifactId>
+	<groupId>ch.vii.i18n</groupId>
+	<artifactId>terminology-converter-pom</artifactId>
 	<packaging>pom</packaging>
-	<version>0.0.1</version>
+	<version>0.0.1-snapshot</version>
 
-	<name>I18nPropertiesFromOrToJson Maven plugin</name>
+	<name>Terminology Converter from or to JSON - POM</name>
 
 
     <modules>
@@ -22,27 +22,8 @@
 		<maven.compiler.target>1.8</maven.compiler.target>
 	</properties>
 
-    <build>
-        <pluginManagement>
-            <plugins>
-                <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-compiler-plugin</artifactId>
-                </plugin>
-            </plugins>
-        </pluginManagement>
-    </build>
 
-	<dependencies>
 
-		<!-- https://mvnrepository.com/artifact/junit/junit -->
-		<dependency>
-			<groupId>junit</groupId>
-			<artifactId>junit</artifactId>
-			<version>4.12</version>
-			<scope>test</scope>
-		</dependency>
 
-	</dependencies>
 
 </project>

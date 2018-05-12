@@ -3,13 +3,20 @@ I18n Resource Bundles (properties) from or to JSON maven plugin
 
 It can happen that you need java resource bundles as *.properties and as *.json and you want them to be in sync.
 
-So just maintain either the *.properties or the *.json files and let the maven plug-in to do the rest.
+So just maintain either the *.properties or the *.json files and let the maven plug-in do the rest.
+
+# from *.json to *.properties
+
+| from messages.json | to messages.properties |
+| :---| :---|
+| {  <br>  "i18n.hello.world_description" : "special characters \t\\ \n2nd öäüàè", <br>   "i18n.hello.world_title" : "Hello World 😀⚽️" <br> } | i18n.hello.world_description=special characters \t\\ \n2nd öäüàè <br> i18n.hello.world_title=Hello World 😀⚽ |
+
 
 Usage from Json to properties:
 ```
 <plugin>
-    <groupId>ch.vii</groupId>
-	<artifactId>i18n-json2properties-maven-plugin</artifactId>
+    <groupId>ch.vii.i18n</groupId>
+	<artifactId>terminology-converter-maven-plugin</artifactId>
     
     <version>0.0.1</version>
     <executions>
@@ -27,11 +34,21 @@ Usage from Json to properties:
 </plugin>
 ```
 
+# from *.properties to *.json
+
+| from messages.json | to messages.properties |
+| :---| :---|
+| {  <br>  "i18n.hello.world_description" : "special characters \t\\ \n2nd öäüàè", <br>   "i18n.hello.world_title" : "Hello World 😀⚽️" <br> } | i18n.hello.world_description=special characters \t\\ \n2nd öäüàè <br> i18n.hello.world_title=Hello World 😀⚽ |
+
+
+
+
+
 Usage from Json to properties:
 ``` 
 <plugin>
-    <groupId>ch.vii</groupId>
-	<artifactId>i18n-json2properties-maven-plugin</artifactId>
+    <groupId>ch.vii.i18n</groupId>
+	<artifactId>terminology-converter-maven-plugin</artifactId>
     <version>0.0.1</version>
     <executions>
         <execution>
@@ -51,8 +68,8 @@ Usage from Json to properties:
 	<build>
 		<plugins>
 			<plugin>
-				<groupId>ch.vii</groupId>
-				<artifactId>i18n-json2properties-maven-plugin</artifactId>
+				<groupId>ch.vii.i18n</groupId>
+				<artifactId>terminology-converter-maven-plugin</artifactId>
 				<version>0.0.1</version>
 				<configuration>
 					<sourcePath>${sourcePath}</sourcePath>
@@ -63,4 +80,4 @@ Usage from Json to properties:
 	</build>
 	
 	
-	mvn i18n-json2properties:json2properties -DsourcePath="./src/test/resources/fromJson" -DtargetPath="./target/test/resources2"
+	mvn terminology-converter:json2properties -DsourcePath="./src/test/resources/fromJson" -DtargetPath="./target/test/resources2"
