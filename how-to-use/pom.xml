@@ -4,9 +4,10 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>ch.vii.i18n</groupId>
-	<artifactId>plugin-test</artifactId>
-	<version>1.0-SNAPSHOT</version>
+	<artifactId>how-to-use</artifactId>
+	<version>1.0.0-SNAPSHOT</version>
 
+	<packaging>pom</packaging>
 	<properties>
 		<sourcePath></sourcePath>
 		<targetPath></targetPath>
@@ -23,6 +24,74 @@
 					<targetPath>${targetPath}</targetPath>
 				</configuration>
 			</plugin>
+
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-assembly-plugin</artifactId>
+				<executions>
+					<execution>
+						<id>pack-json-distribution</id>
+						<phase>package</phase>
+						<goals>
+							<goal>single</goal>
+						</goals>
+						<configuration>
+							<descriptors>
+								<descriptor>assembly/pack-json.xml</descriptor>
+							</descriptors>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+			
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-assembly-plugin</artifactId>
+				<executions>
+					<execution>
+						<id>pack-properties-distribution</id>
+						<phase>package</phase>
+						<goals>
+							<goal>single</goal>
+						</goals>
+						<configuration>
+							<descriptors>
+								<descriptor>assembly/pack-properties.xml</descriptor>
+							</descriptors>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+
+
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>build-helper-maven-plugin</artifactId>
+				<version>1.8</version>
+				<executions>
+					<execution>
+						<id>attach-artifacts</id>
+						<phase>package</phase>
+						<goals>
+							<goal>attach-artifact</goal>
+						</goals>
+
+						<configuration>
+							<artifacts>
+
+								<artifact>
+									<file>${basedir}/target/how-to-use-${project.version}-pack-json.zip</file>
+									<type>i18n-json.zip</type>
+								</artifact>
+
+							</artifacts>
+						</configuration>
+
+					</execution>
+				</executions>
+			</plugin>
+
 		</plugins>
 	</build>
 </project>
