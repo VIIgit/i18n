@@ -1,4 +1,4 @@
-# i18n
+# i18n DRAFT
 I18n Resource Bundles (properties) from or to JSON maven plugin 
 
 It can happen that you need java resource bundles as *.properties and as *.json and you want them to be in sync.
