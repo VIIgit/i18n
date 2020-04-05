@@ -13,7 +13,7 @@ So just maintain either the *.properties or the *.json files and let the maven p
 
 
 Usage from Json to properties:
-```
+``` xml
 <plugin>
     <groupId>ch.vii.i18n</groupId>
 	<artifactId>terminology-converter-maven-plugin</artifactId>
