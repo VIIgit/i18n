@@ -45,7 +45,7 @@ Usage from Json to properties:
 
 
 Usage from Json to properties:
-``` 
+``` xml
 <plugin>
     <groupId>ch.vii.i18n</groupId>
 	<artifactId>terminology-converter-maven-plugin</artifactId>
@@ -65,6 +65,9 @@ Usage from Json to properties:
 </plugin>
 ```
 
+## CLI
+
+``` xml
 	<build>
 		<plugins>
 			<plugin>
@@ -79,5 +82,8 @@ Usage from Json to properties:
 		</plugins>
 	</build>
 	
-	
-	mvn terminology-converter:json2properties -DsourcePath="./src/test/resources/fromJson" -DtargetPath="./target/test/resources2"
+``` 
+
+``` 
+mvn terminology-converter:json2properties -DsourcePath="./src/test/resources/fromJson" -DtargetPath="./target/test/resources2"
+``` 
